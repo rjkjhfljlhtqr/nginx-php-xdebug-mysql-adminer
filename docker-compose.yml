@@ -1,0 +1,28 @@
+services:
+
+    webserver:
+        build: ./nginx
+        ports:
+            - "80:80"
+        volumes:
+            - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    preprocessor:
+        build: ./php
+        volumes:
+            - ./www:/var/www/html
+    database: 
+        build: ./mysql
+        volumes:
+            - ./mysql/data:/var/lib/mysql
+        ports: 
+          - "3306:3306"
+        restart: always
+        environment: 
+          MYSQL_ROOT_PASSWORD: secret
+          MYSQL_USER: user
+          MYSQL_PASSWORD: secret
+          MYSQL_DATABASE: db
+    databaseadministation:
+        image: adminer
+        ports: 
+          - 8080:8080
