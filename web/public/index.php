@@ -12,7 +12,9 @@
    
    <script src="script.js"></script>
    
-<?php echo '<h1>Hello</h1>'; ?>
+<?php echo '<h1>Hello</h1>'; 
+ echo '<h1>Hello</h1>'; 
+ echo '<h1>Hello</h1>'; ?>
 
 </body>
 </html>
