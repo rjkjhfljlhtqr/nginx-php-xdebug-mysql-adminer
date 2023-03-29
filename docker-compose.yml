@@ -19,10 +19,10 @@ services:
     #        - "3306:3306"
     #     restart: always
     #     environment: 
-    #        MYSQL_ROOT_PASSWORD: secret
-    #        MYSQL_USER: user
-    #        MYSQL_PASSWORD: secret
-    #        MYSQL_DATABASE: db
+    #        MYSQL_ROOT_PASSWORD: ${MYSQL__ROOT_PASSWORD}
+    #        MYSQL_USER: ${MYSQL_USER}
+    #        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    #        MYSQL_DATABASE: ${MYSQL_DATABASE}
     databaseadministation:
          image: adminer
          ports: 
