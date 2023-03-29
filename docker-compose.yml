@@ -1,28 +1,29 @@
 services:
 
     webserver:
-        build: ./nginx
+        build: ./docker/nginx
         ports:
             - "80:80"
         volumes:
             - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+            - ./web/public/:/var/www/html
     preprocessor:
         build: ./docker/php
         volumes:
             - ./web/public/:/var/www/html
-    # database: 
-    #     build: ./mysql
-    #     volumes:
-    #         - ./mysql/data:/var/lib/mysql
-    #     ports: 
-    #       - "3306:3306"
-    #     restart: always
-    #     environment: 
-    #       MYSQL_ROOT_PASSWORD: secret
-    #       MYSQL_USER: user
-    #       MYSQL_PASSWORD: secret
-    #       MYSQL_DATABASE: db
-    # databaseadministation:
-    #     image: adminer
-    #     ports: 
-    #       - 8080:8080
+    database: 
+        build: ./docker/mysql
+        volumes:
+            - ./docker/mysql/data:/var/lib/mysql
+        ports: 
+           - "3306:3306"
+        restart: always
+        environment: 
+           MYSQL_ROOT_PASSWORD: secret
+           MYSQL_USER: user
+           MYSQL_PASSWORD: secret
+           MYSQL_DATABASE: db
+    databaseadministation:
+         image: adminer
+         ports: 
+           - 8080:8080
