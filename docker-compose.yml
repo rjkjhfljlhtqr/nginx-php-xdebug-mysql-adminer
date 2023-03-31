@@ -11,18 +11,18 @@ services:
         build: ./docker/php
         volumes:
             - ./web/public/:/var/www/html
-    # database: 
-    #     build: ./docker/mysql
-    #     volumes:
-    #         - ./docker/mysql/data:/var/lib/mysql
-    #     ports: 
-    #        - "3306:3306"
-    #     restart: always
-    #     environment: 
-    #        MYSQL_ROOT_PASSWORD: ${MYSQL__ROOT_PASSWORD}
-    #        MYSQL_USER: ${MYSQL_USER}
-    #        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-    #        MYSQL_DATABASE: ${MYSQL_DATABASE}
+    database: 
+         build: ./docker/mysql
+         volumes:
+             - ./docker/mysql/data:/var/lib/mysql
+         ports: 
+            - "3306:3306"
+         restart: always
+         environment: 
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
     databaseadministation:
          image: adminer
          ports: 
